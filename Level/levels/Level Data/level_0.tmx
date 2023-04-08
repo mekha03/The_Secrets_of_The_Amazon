@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="60" height="11" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="1">
- <tileset firstgid="1" source="../../../Tile Sets/background.tsx"/>
- <tileset firstgid="86" source="../../../Tile Sets/jungle 2.0.tsx"/>
- <tileset firstgid="158" source="../../../Tile Sets/jungle again.tsx"/>
- <tileset firstgid="386" source="../../../Tile Sets/tools_again.tsx"/>
- <tileset firstgid="642" source="../../../Tile Sets/last tools.tsx"/>
- <tileset firstgid="898" source="../../../Tile Sets/background3.tsx"/>
- <tileset firstgid="1210" source="../../../Tile Sets/enemysmall.tsx"/>
- <tileset firstgid="1211" source="../../../Tile Sets/enemy.tsx"/>
- <tileset firstgid="1215" source="../../../Tile Sets/bigtools.tsx"/>
+ <tileset firstgid="1" source="../Tile Sets/background.tsx"/>
+ <tileset firstgid="86" source="../Tile Sets/jungle 2.0.tsx"/>
+ <tileset firstgid="158" source="../Tile Sets/jungle again.tsx"/>
+ <tileset firstgid="386" source="../Tile Sets/tools_again.tsx"/>
+ <tileset firstgid="642" source="../Tile Sets/last tools.tsx"/>
+ <tileset firstgid="898" source="../Tile Sets/background3.tsx"/>
+ <tileset firstgid="1210" source="../Tile Sets/enemysmall.tsx"/>
+ <tileset firstgid="1211" source="../Tile Sets/enemy.tsx"/>
+ <tileset firstgid="1215" source="../Tile Sets/bigtools.tsx"/>
  <layer id="1" name="background" width="60" height="11">
   <data encoding="csv">
 946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,946,947,948,949,950,951,952,953,954,955,956,957,
