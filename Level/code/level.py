@@ -1,5 +1,6 @@
 import pygame
-from tiles import Tile
+from support import import_csv_layout, import_cut_graphic
+from tiles import Tile, StaticTile
 from settings import tile_size, screen_width
 from player import Player
 
@@ -9,6 +10,52 @@ class Level:
 
         # level setup
         self.display_surface = surface
+        self.world_shift = -4
+
+        # terrain setup
+        terrain_layout = import_csv_layout(level_data['terrain'])
+        self.terrain_sprites = self.create_tile_group(terrain_layout,'terrain')
+
+        # background setup
+        background_layout = import_csv_layout(level_data['background'])
+        self.background_sprites = self.create_tile_group(background_layout, 'background')
+
+
+    def create_tile_group(self, layout, type):
+        sprite_group = pygame.sprite.Group()
+
+        for row_index, row in enumerate(layout):
+            for col_index, val in enumerate(row):
+                if val != '-1':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+
+                    if type == 'terrain':
+                        terrain_tile_list = import_cut_graphic('../graphics/Misc/jungleagain.png')
+                        tile_surface = terrain_tile_list[int(val)]
+                        sprite = StaticTile(tile_size,x,y,tile_surface)
+                        sprite_group.add(sprite)
+        return sprite_group
+
+    def run(self):
+        self.terrain_sprites.draw(self.display_surface)
+        self.terrain_sprites.update(self.world_shift)
+        """
+        # level
+        self.tiles.update(self.world_shift)
+        self.tiles.draw(self.display_surface)
+        self.scroll_x()
+
+        # player
+        self.player.update()
+        self.horizontal_movement_collision()
+        self.vertical_movement_collision()
+        self.player.draw(self.display_surface)
+        
+        """
+
+
+"""
         self.setup_level(level_data)
         self.world_shift = 0
 
@@ -68,14 +115,5 @@ class Level:
                 elif player.direction.y < 0:
                     player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
-    def run(self):
-        # level
-        self.tiles.update(self.world_shift)
-        self.tiles.draw(self.display_surface)
-        self.scroll_x()
 
-        # player
-        self.player.update()
-        self.horizontal_movement_collision()
-        self.vertical_movement_collision()
-        self.player.draw(self.display_surface)
+    """
