@@ -27,3 +27,4 @@ def import_cut_graphic(path):
             cut_tiles.append(new_surf)
 
     return cut_tiles
+

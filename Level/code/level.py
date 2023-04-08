@@ -14,12 +14,11 @@ class Level:
 
         # terrain setup
         terrain_layout = import_csv_layout(level_data['terrain'])
-        self.terrain_sprites = self.create_tile_group(terrain_layout,'terrain')
+        self.terrain_sprites = self.create_tile_group(terrain_layout, 'terrain')
 
-        # background setup
-        background_layout = import_csv_layout(level_data['background'])
-        self.background_sprites = self.create_tile_group(background_layout, 'background')
-
+        # coin setup
+        coins_layout = import_csv_layout(level_data['coins'])
+        self.coins_sprites = self.create_tile_group(coins_layout, 'coins')
 
     def create_tile_group(self, layout, type):
         sprite_group = pygame.sprite.Group()
@@ -33,87 +32,20 @@ class Level:
                     if type == 'terrain':
                         terrain_tile_list = import_cut_graphic('../graphics/Misc/jungleagain.png')
                         tile_surface = terrain_tile_list[int(val)]
-                        sprite = StaticTile(tile_size,x,y,tile_surface)
-                        sprite_group.add(sprite)
+                        sprite = StaticTile(tile_size, x, y, tile_surface)
+
+                    if type == 'coins':
+                        coins_tile_list = import_cut_graphic('../graphics/Misc/tools_3_1024x1024.png')
+                        tile_surface = coins_tile_list[int(val)]
+                        tile_surface.set_colorkey((0,0,0))
+                        sprite = StaticTile(tile_size, x, y, tile_surface)
+
+                    sprite_group.add(sprite)
         return sprite_group
 
     def run(self):
-        self.terrain_sprites.draw(self.display_surface)
         self.terrain_sprites.update(self.world_shift)
-        """
-        # level
-        self.tiles.update(self.world_shift)
-        self.tiles.draw(self.display_surface)
-        self.scroll_x()
+        self.terrain_sprites.draw(self.display_surface)
 
-        # player
-        self.player.update()
-        self.horizontal_movement_collision()
-        self.vertical_movement_collision()
-        self.player.draw(self.display_surface)
-        
-        """
-
-
-"""
-        self.setup_level(level_data)
-        self.world_shift = 0
-
-    def setup_level(self, layout):
-        self.tiles = pygame.sprite.Group()
-        self.player = pygame.sprite.GroupSingle()
-
-        for row_index, row in enumerate(layout):
-            for col_index, cell in enumerate(row):
-                x = col_index * tile_size
-                y = row_index * tile_size
-                if cell == 'X':
-                    tile = Tile((x,y), tile_size)
-                    self.tiles.add(tile)
-
-                if cell == 'P':
-                    player_sprite = Player((x,y))
-                    self.player.add(player_sprite)
-
-    def scroll_x(self):
-        player = self.player.sprite
-        player_x = player.rect.centerx
-        direction_x = player.direction.x
-
-        if player_x < screen_width / 4 and direction_x < 0:
-            self.world_shift = 8
-            player.speed = 0
-        elif player_x > screen_width - (screen_width / 4) and direction_x > 0:
-            self.world_shift = -8
-            player.speed = 0
-        else:
-            self.world_shift = 0
-            player.speed = 8
-
-
-    def horizontal_movement_collision(self):
-        player = self.player.sprite
-        player.rect.x += player.direction.x * player.speed
-
-        for sprite in self.tiles.sprites():
-            if sprite.rect.colliderect(player.rect):
-                if player.direction.x < 0:
-                    player.rect.left = sprite.rect.right
-                elif player.direction.x > 0:
-                    player.rect.right = sprite.rect.left
-
-
-    def vertical_movement_collision(self):
-        player = self.player.sprite
-        player.apply_gravity()
-
-        for sprite in self.tiles.sprites():
-            if sprite.rect.colliderect(player.rect):
-                if player.direction.y > 0:
-                    player.rect.bottom = sprite.rect.top
-                    player.direction.y = 0
-                elif player.direction.y < 0:
-                    player.rect.top = sprite.rect.bottom
-                    player.direction.y = 0
-
-    """
+        self.coins_sprites.update(self.world_shift)
+        self.coins_sprites.draw(self.display_surface)
