@@ -1,7 +1,7 @@
 level_0 = {
-    'terrain': '../levels/Level_0/level_0_terrain.csv',
-    'coins': '../levels/Level_0/level_0_coins.csv',
-    'constraints': '../levels/Level_0/level_0_constraints.csv',
-    'background': '../levels/Level_0/level_0_background.csv',
-    'enemy': '../levels/Level_0/level_0_enemy.csv',
-    'player': '../levels/Level_0/level_0_player.csv'}
+    'Platform': '../levels/Level_0/level_0_Platform.csv',
+    'Coins': '../levels/Level_0/level_0_Coins.csv',
+    'Constraints_worm': '../levels/Level_0/level_0_Constraints_worm.csv',
+    'Plants': '../levels/Level_0/level_0_Plants.csv',
+    'Enemy_worm': '../levels/Level_0/level_0_Enemy_worm.csv',
+    'Player': '../levels/Level_0/level_0_Player.csv'}
