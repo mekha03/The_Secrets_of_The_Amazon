@@ -4,13 +4,12 @@ from settings import tile_size
 
 
 def import_csv_layout(path):
-    terrain_map = []
+    Platform_map = []
     with open(path) as map:
         level = reader(map, delimiter=',')
         for row in level:
-            terrain_map.append(list(row))
-        return terrain_map
-
+            Platform_map.append(list(row))
+        return Platform_map
 
 def import_cut_graphic(path):
     surface = pygame.image.load(path).convert_alpha()
@@ -27,4 +26,3 @@ def import_cut_graphic(path):
             cut_tiles.append(new_surf)
 
     return cut_tiles
-

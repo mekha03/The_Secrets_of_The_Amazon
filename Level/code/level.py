@@ -13,8 +13,8 @@ class Level:
         self.world_shift = -4
 
         # terrain setup
-        terrain_layout = import_csv_layout(level_data['terrain'])
-        self.terrain_sprites = self.create_tile_group(terrain_layout, 'terrain')
+        Platform_layout = import_csv_layout(level_data['Platform'])
+        self.Platform_sprites = self.create_tile_group(Platform_layout, 'Platform')
 
         # coin setup
         coins_layout = import_csv_layout(level_data['coins'])
@@ -29,9 +29,9 @@ class Level:
                     x = col_index * tile_size
                     y = row_index * tile_size
 
-                    if type == 'terrain':
-                        terrain_tile_list = import_cut_graphic('../graphics/Misc/jungleagain.png')
-                        tile_surface = terrain_tile_list[int(val)]
+                    if type == 'Platform':
+                        Platform_tile_list = import_cut_graphic('../graphics/Misc/p27_0-removebg-preview.png')
+                        tile_surface = Platform_tile_list[int(val)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
                     if type == 'coins':
