@@ -10,15 +10,16 @@ class Level:
 
         # level setup
         self.display_surface = surface
-        self.world_shift = -4
+        self.world_shift = -2
 
         # terrain setup
         Platform_layout = import_csv_layout(level_data['Platform'])
         self.Platform_sprites = self.create_tile_group(Platform_layout, 'Platform')
 
-        # coin setup
-        coins_layout = import_csv_layout(level_data['coins'])
-        self.coins_sprites = self.create_tile_group(coins_layout, 'coins')
+        # plants setup
+        Plants_layout = import_csv_layout(level_data['Plants'])
+        self.Plants_sprites = self.create_tile_group(Plants_layout, 'Plants')
+
 
     def create_tile_group(self, layout, type):
         sprite_group = pygame.sprite.Group()
@@ -34,18 +35,19 @@ class Level:
                         tile_surface = Platform_tile_list[int(val)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
-                    if type == 'coins':
-                        coins_tile_list = import_cut_graphic('../graphics/Misc/tools_3_1024x1024.png')
-                        tile_surface = coins_tile_list[int(val)]
-                        tile_surface.set_colorkey((0,0,0))
+                    if type == 'Plants':
+                        Plants_tile_list = import_cut_graphic('../graphics/Misc/p27_1-removebg-preview.png')
+                        tile_surface = Plants_tile_list[int(val)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
                     sprite_group.add(sprite)
         return sprite_group
 
     def run(self):
-        self.terrain_sprites.update(self.world_shift)
-        self.terrain_sprites.draw(self.display_surface)
+        # platform
+        self.Platform_sprites.update(self.world_shift)
+        self.Platform_sprites.draw(self.display_surface)
 
-        self.coins_sprites.update(self.world_shift)
-        self.coins_sprites.draw(self.display_surface)
+        # plants
+        self.Plants_sprites.draw(self.display_surface)
+        self.Plants_sprites.update(self.world_shift)
