@@ -1,6 +1,6 @@
 import pygame
 from support import import_csv_layout, import_cut_graphic
-from tiles import Tile, StaticTile, AnimatedTile
+from tiles import Tile, StaticTile, Coins
 from settings import tile_size, screen_width
 from player import Player
 
@@ -10,7 +10,7 @@ class Level:
 
         # level setup
         self.display_surface = surface
-        self.world_shift = 0
+        self.world_shift = -2
 
         # terrain setup
         Platform_layout = import_csv_layout(level_data['Platform'])
@@ -45,7 +45,11 @@ class Level:
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
                     if type == 'Coins':
-                        sprite = AnimatedTile(tile_size, x, y, '../graphics/Misc/coin/gold')
+                        if int(val) == 0:
+                            path = '../graphics/Misc/coin/gold'
+                        else:
+                            path = '../graphics/Misc/coin/silver'
+                        sprite = Coins(tile_size, x, y, path)
 
 
                     sprite_group.add(sprite)
