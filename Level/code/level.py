@@ -1,6 +1,6 @@
 import pygame
 from support import import_csv_layout, import_cut_graphic
-from tiles import Tile, StaticTile
+from tiles import Tile, StaticTile, AnimatedTile
 from settings import tile_size, screen_width
 from player import Player
 
@@ -10,7 +10,7 @@ class Level:
 
         # level setup
         self.display_surface = surface
-        self.world_shift = -2
+        self.world_shift = 0
 
         # terrain setup
         Platform_layout = import_csv_layout(level_data['Platform'])
@@ -19,6 +19,10 @@ class Level:
         # plants setup
         Plants_layout = import_csv_layout(level_data['Plants'])
         self.Plants_sprites = self.create_tile_group(Plants_layout, 'Plants')
+
+        # coins
+        Coins_layout = import_csv_layout(level_data['Coins'])
+        self.Coins_sprites = self.create_tile_group(Coins_layout, 'Coins')
 
 
     def create_tile_group(self, layout, type):
@@ -40,6 +44,10 @@ class Level:
                         tile_surface = Plants_tile_list[int(val)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
 
+                    if type == 'Coins':
+                        sprite = AnimatedTile(tile_size, x, y, '../graphics/Misc/coin/gold')
+
+
                     sprite_group.add(sprite)
         return sprite_group
 
@@ -51,3 +59,8 @@ class Level:
         # plants
         self.Plants_sprites.draw(self.display_surface)
         self.Plants_sprites.update(self.world_shift)
+
+        # coins
+        self.Coins_sprites.update(self.world_shift)
+        self.Coins_sprites.draw(self.display_surface)
+
