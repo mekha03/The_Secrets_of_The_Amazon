@@ -2,6 +2,7 @@ import pygame
 from support import import_csv_layout, import_cut_graphic
 from tiles import Tile, StaticTile, Coins
 from settings import tile_size, screen_width
+from enemy
 from player import Player
 
 
@@ -23,6 +24,10 @@ class Level:
         # coins
         Coins_layout = import_csv_layout(level_data['Coins'])
         self.Coins_sprites = self.create_tile_group(Coins_layout, 'Coins')
+
+        # enemy_worm
+        Enemy_worm_layout = import_csv_layout(level_data['Enemy_worm'])
+        self.Enemy_worm_sprites = self.create_tile_group(Enemy_worm_layout,'Enemy_worm')
 
 
     def create_tile_group(self, layout, type):
@@ -50,6 +55,9 @@ class Level:
                         else:
                             path = '../graphics/Misc/coin/silver'
                         sprite = Coins(tile_size, x, y, path)
+
+                    if type == 'Enemy_worm':
+                        sprite = Enemy_worm(tile_size,x,y)
 
 
                     sprite_group.add(sprite)
