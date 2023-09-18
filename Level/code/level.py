@@ -2,7 +2,7 @@ import pygame
 from support import import_csv_layout, import_cut_graphic
 from tiles import Tile, StaticTile, Coins
 from settings import tile_size, screen_width
-from enemy
+from Enemy import Enemy
 from player import Player
 
 
@@ -57,7 +57,7 @@ class Level:
                         sprite = Coins(tile_size, x, y, path)
 
                     if type == 'Enemy_worm':
-                        sprite = Enemy_worm(tile_size,x,y)
+                        sprite = Enemy(tile_size,x,y)
 
 
                     sprite_group.add(sprite)
@@ -75,4 +75,8 @@ class Level:
         # coins
         self.Coins_sprites.update(self.world_shift)
         self.Coins_sprites.draw(self.display_surface)
+
+        # enemy_worm
+        self.Enemy_worm_sprites.update(self.world_shift)
+        self.Enemy_worm_sprites.draw(self.display_surface)
 
