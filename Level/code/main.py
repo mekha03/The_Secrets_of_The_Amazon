@@ -14,7 +14,7 @@ while True:
             pygame.quit()
             sys.exit()
 
-    screen.fill('gray')
+    screen.fill('DarkSeaGreen4')
     level.run()
 
     pygame.display.update()
