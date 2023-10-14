@@ -83,7 +83,7 @@ class Level:
                 if val == '253':
                     print('player goes here')
                 if val == '239':
-                    level_end_surface = pygame.image.load('../graphics/Misc/Level_end.png').convert_alpha()
+                    level_end_surface = pygame.image.load('../graphics/Misc/End_words.png').convert_alpha()
                     sprite = StaticTile(tile_size,x,y,level_end_surface)
                     self.goal.add(sprite)
 

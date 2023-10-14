@@ -4,4 +4,4 @@ level_0 = {
     'Constraints_worm': '../levels/Level_0/level_0_Constraints_worm.csv',
     'Plants': '../levels/Level_0/level_0_Plants.csv',
     'Enemy_worm': '../levels/Level_0/level_0_Enemy_worm.csv',
-    'Player': '../levels/Level_0/level_0_Player.csv'}
+    'player': '../levels/Level_0/level_0_player.csv'}
